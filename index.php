@@ -81,82 +81,6 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Лабораторная работа №5 — Форма с авторизацией</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .error-border {
-            border: 2px solid #f44336 !important;
-            background-color: #ffebee !important;
-        }
-        .field-error {
-            color: #f44336;
-            font-size: 0.8rem;
-            margin-top: 0.25rem;
-            display: block;
-        }
-        .error-summary {
-            background-color: #ffebee;
-            border-left: 5px solid #f44336;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            border-radius: 12px;
-        }
-        .user-info {
-            background-color: #e8f5e9;
-            border-left: 5px solid #4caf50;
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .user-info .logout-btn {
-            background: #f44336;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        .user-info .logout-btn:hover {
-            background: #c62828;
-        }
-        .credentials-box {
-            background: #f3e5f5;
-            border: 2px dashed #7b1fa2;
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        .credentials-box .login-cred {
-            font-weight: bold;
-            color: #4a148c;
-            font-size: 1.1rem;
-        }
-        header { background: linear-gradient(135deg, #7b1fa2, #4a148c); border-bottom: 5px solid #4caf50; }
-        footer { background: #7b1fa2; border-top: 1px solid #4caf50; }
-        .submit-btn { background: linear-gradient(135deg, #4caf50, #2e7d32); }
-        .submit-btn:hover { background: linear-gradient(135deg, #388e3c, #1b5e20); }
-        .action-btn { background: linear-gradient(135deg, #7b1fa2, #4a148c); }
-        .action-btn:hover { background: linear-gradient(135deg, #6a1b9a, #38006b); }
-        .action-btn.secondary { background: linear-gradient(135deg, #4caf50, #2e7d32); }
-        .action-btn.secondary:hover { background: linear-gradient(135deg, #388e3c, #1b5e20); }
-        .action-btn.admin { background: linear-gradient(135deg, #7b1fa2, #4a148c); }
-        .action-btn.admin:hover { box-shadow: 0 6px 14px rgba(123, 31, 162, 0.4); }
-        .form-group label { color: #4a148c; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: #7b1fa2;
-            box-shadow: 0 0 0 3px rgba(123, 31, 162, 0.2);
-        }
-        .required { color: #f44336; }
-        .intro { border-left: 8px solid #7b1fa2; background-color: #f3e5f5; }
-        .application-form { box-shadow: 0 8px 20px rgba(123, 31, 162, 0.1); }
-        .login-container h2 { color: #4a148c; }
-        .login-btn { background: linear-gradient(135deg, #7b1fa2, #4a148c); }
-        .login-btn:hover { background: linear-gradient(135deg, #6a1b9a, #38006b); }
-        .register-link a { color: #7b1fa2; }
-    </style>
 </head>
 <body>
     <header>
@@ -177,7 +101,6 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
             </p>
         </section>
 
-        <!-- Информация о пользователе -->
         <?php if (isset($_SESSION['user_id'])): ?>
         <div class="user-info">
             <span>👤 Вы вошли как <strong><?php echo htmlspecialchars($_SESSION['user_name']); ?></strong></span>
@@ -185,9 +108,8 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
         </div>
         <?php endif; ?>
 
-        <!-- Показываем логин/пароль, если они ещё не были показаны -->
         <?php if (isset($_GET['new_login']) && isset($_GET['new_password']) && isset($_GET['credentials_shown']) && $_GET['credentials_shown'] == '0'): ?>
-        <div class="credentials-box" id="credentialsBox">
+        <div class="credentials-box">
             <p><strong>✅ Ваши данные для входа сохранены!</strong></p>
             <p>Запишите их — они понадобятся для редактирования анкеты:</p>
             <p class="login-cred">🔑 Логин: <strong><?php echo htmlspecialchars($_GET['new_login']); ?></strong></p>
@@ -196,7 +118,6 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
         </div>
         <?php endif; ?>
 
-        <!-- Сообщения об ошибках из Cookies -->
         <?php
         $error_fields = ['full_name', 'phone', 'email', 'birth_date', 'gender', 'languages', 'contract_accepted'];
         $error_messages = [];
@@ -215,11 +136,9 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
         </div>
         <?php endif; ?>
 
-        <!-- Форма -->
         <form action="process.php" method="GET" class="application-form">
             <input type="hidden" name="edit_id" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
 
-            <!-- 1. ФИО -->
             <div class="form-group">
                 <label for="full_name">ФИО <span class="required">*</span></label>
                 <input type="text" id="full_name" name="full_name" 
@@ -231,7 +150,6 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
                 <?php endif; ?>
             </div>
 
-            <!-- 2. Телефон -->
             <div class="form-group">
                 <label for="phone">Телефон <span class="required">*</span></label>
                 <input type="tel" id="phone" name="phone"
@@ -243,7 +161,6 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
                 <?php endif; ?>
             </div>
 
-            <!-- 3. Email -->
             <div class="form-group">
                 <label for="email">E-mail <span class="required">*</span></label>
                 <input type="email" id="email" name="email"
@@ -255,7 +172,6 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
                 <?php endif; ?>
             </div>
 
-            <!-- 4. Дата рождения -->
             <div class="form-group">
                 <label for="birth_date">Дата рождения <span class="required">*</span></label>
                 <input type="date" id="birth_date" name="birth_date"
@@ -267,7 +183,6 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
                 <?php endif; ?>
             </div>
 
-            <!-- 5. Пол -->
             <div class="form-group">
                 <label>Пол <span class="required">*</span></label>
                 <div class="radio-group">
@@ -281,7 +196,6 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
                 <?php endif; ?>
             </div>
 
-            <!-- 6. Языки -->
             <div class="form-group">
                 <label for="languages">Любимый язык программирования <span class="required">*</span></label>
                 <select name="languages[]" id="languages" multiple size="6" 
@@ -299,7 +213,6 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
                 <?php endif; ?>
             </div>
 
-            <!-- 7. Биография -->
             <div class="form-group">
                 <label for="biography">Биография</label>
                 <textarea id="biography" name="biography" rows="5"><?php echo $biography; ?></textarea>
@@ -309,7 +222,6 @@ $allowed_languages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java
                 <?php endif; ?>
             </div>
 
-            <!-- 8. Чекбокс -->
             <div class="form-group">
                 <label class="checkbox-label">
                     <input type="checkbox" name="contract_accepted" value="1"
