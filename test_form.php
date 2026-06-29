@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['test'])) {
-    echo "✅ ФОРМА РАБОТАЕТ! Получено: " . htmlspecialchars($_GET['test']);
+    echo "✅ РАБОТАЕТ! Получено: " . htmlspecialchars($_GET['test']);
     exit;
 }
 ?>
@@ -8,9 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['test'])) {
 <html>
 <head><title>Тест</title></head>
 <body>
-    <form method="GET">
-        <input type="text" name="test" value="hello">
-        <button type="submit">Отправить</button>
+    <h1>Тест формы</h1>
+    <form action="test_form.php" method="GET">
+        <input type="text" name="test" value="hello" style="padding:10px;width:300px;">
+        <br><br>
+        <button type="submit" style="padding:10px 30px;background:#4caf50;color:white;border:none;border-radius:5px;cursor:pointer;">
+            Отправить
+        </button>
     </form>
 </body>
 </html>
