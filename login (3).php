@@ -53,10 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background: white;
             padding: 2rem;
             border-radius: 24px;
-            box-shadow: 0 8px 20px rgba(240, 98, 146, 0.1);
+            box-shadow: 0 8px 20px rgba(123, 31, 162, 0.1);
         }
         .login-container h2 {
-            color: #d81b60;
+            color: #4a148c;
             text-align: center;
             margin-bottom: 1.5rem;
         }
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .login-btn {
             width: 100%;
             padding: 0.75rem;
-            background: linear-gradient(135deg, #f06292, #d81b60);
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
             color: white;
             border: none;
             border-radius: 40px;
@@ -88,18 +88,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin-top: 1rem;
         }
         .register-link a {
-            color: #d81b60;
+            color: #7b1fa2;
             text-decoration: none;
         }
         .register-link a:hover {
             text-decoration: underline;
+        }
+        header { background: linear-gradient(135deg, #7b1fa2, #4a148c); border-bottom: 5px solid #4caf50; }
+        footer { background: #7b1fa2; border-top: 1px solid #4caf50; }
+        .form-group label { color: #4a148c; }
+        .form-group input:focus {
+            border-color: #7b1fa2;
+            box-shadow: 0 0 0 3px rgba(123, 31, 162, 0.2);
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-           
             <h2>Задание 5. Вход в систему</h2>
         </div>
     </header>

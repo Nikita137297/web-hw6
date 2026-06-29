@@ -85,22 +85,22 @@ $totalApplications = count($applications);
         .stat-card .number {
             font-size: 2rem;
             font-weight: bold;
-            color: #d81b60;
+            color: #4a148c;
         }
         .stat-card .label {
-            color: #9b4b6e;
+            color: #6a1b9a;
             font-size: 0.9rem;
         }
         .stat-card .lang-bar {
             margin-top: 0.5rem;
             height: 6px;
-            background: #ffccd9;
+            background: #ce93d8;
             border-radius: 3px;
             overflow: hidden;
         }
         .stat-card .lang-bar .fill {
             height: 100%;
-            background: linear-gradient(90deg, #f06292, #d81b60);
+            background: linear-gradient(90deg, #7b1fa2, #4a148c);
             border-radius: 3px;
             transition: width 0.5s;
         }
@@ -109,7 +109,7 @@ $totalApplications = count($applications);
             background: white;
             border-radius: 20px;
             padding: 1rem;
-            box-shadow: 0 8px 20px rgba(240,98,146,0.1);
+            box-shadow: 0 8px 20px rgba(123,31,162,0.1);
         }
         .admin-table {
             width: 100%;
@@ -117,7 +117,7 @@ $totalApplications = count($applications);
             min-width: 1000px;
         }
         .admin-table th {
-            background: linear-gradient(135deg, #f8b0c0, #f48fb1);
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
             color: white;
             padding: 0.75rem 1rem;
             text-align: left;
@@ -126,14 +126,14 @@ $totalApplications = count($applications);
         }
         .admin-table td {
             padding: 0.75rem 1rem;
-            border-bottom: 1px solid #ffccd9;
+            border-bottom: 1px solid #ce93d8;
             vertical-align: middle;
         }
         .admin-table tr:hover {
-            background: #fff5f7;
+            background: #f3e5f5;
         }
         .badge {
-            background: #f06292;
+            background: #7b1fa2;
             color: white;
             padding: 0.15rem 0.6rem;
             border-radius: 20px;
@@ -142,7 +142,7 @@ $totalApplications = count($applications);
             margin: 0.1rem;
         }
         .btn-admin-edit {
-            background: #2196f3;
+            background: #4caf50;
             color: white;
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
@@ -151,7 +151,7 @@ $totalApplications = count($applications);
             display: inline-block;
         }
         .btn-admin-edit:hover {
-            background: #1976d2;
+            background: #388e3c;
         }
         .btn-admin-delete {
             background: #f44336;
@@ -168,7 +168,7 @@ $totalApplications = count($applications);
             background: #c62828;
         }
         .btn-back {
-            background: linear-gradient(135deg, #b0bec5, #90a4ae);
+            background: #4caf50;
             color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 40px;
@@ -178,12 +178,21 @@ $totalApplications = count($applications);
         }
         .btn-back:hover {
             transform: translateY(-2px);
+            background: #388e3c;
         }
         .empty-state {
             text-align: center;
             padding: 3rem;
-            color: #9b4b6e;
+            color: #6a1b9a;
         }
+        .admin-header .btn-back {
+            margin-right: 0.5rem;
+        }
+        .admin-container h3 {
+            color: #4a148c;
+        }
+        header { background: linear-gradient(135deg, #7b1fa2, #4a148c); border-bottom: 5px solid #4caf50; }
+        footer { background: #7b1fa2; border-top: 1px solid #4caf50; }
         @media (max-width: 768px) {
             .admin-header {
                 flex-direction: column;
@@ -211,7 +220,7 @@ $totalApplications = count($applications);
         </div>
 
         <!-- Статистика -->
-        <h3 style="color: #d81b60; margin-bottom: 1rem;">📊 Статистика</h3>
+        <h3 style="color: #4a148c; margin-bottom: 1rem;">📊 Статистика</h3>
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="number"><?php echo $totalApplications; ?></div>
@@ -229,7 +238,7 @@ $totalApplications = count($applications);
         </div>
 
         <!-- Таблица анкет -->
-        <h3 style="color: #d81b60; margin-bottom: 1rem;">📋 Все анкеты</h3>
+        <h3 style="color: #4a148c; margin-bottom: 1rem;">📋 Все анкеты</h3>
         <div class="table-wrapper">
             <?php if (empty($applications)): ?>
                 <div class="empty-state">
@@ -272,7 +281,7 @@ $totalApplications = count($applications);
                         <td style="max-width:150px; word-break:break-word;">
                             <?php 
                             $bio = htmlspecialchars($app['biography'] ?? '');
-                            echo empty($bio) ? '<em style="color:#9b4b6e;">—</em>' : 
+                            echo empty($bio) ? '<em style="color:#6a1b9a;">—</em>' : 
                                 (strlen($bio) > 50 ? substr($bio, 0, 50) . '…' : $bio);
                             ?>
                         </td>

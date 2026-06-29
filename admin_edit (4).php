@@ -154,8 +154,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .error-border { border: 2px solid #f44336 !important; background: #ffebee !important; }
         .field-error { color: #f44336; font-size: 0.8rem; display: block; margin-top: 0.25rem; }
         .admin-edit-container { max-width: 800px; margin: 0 auto; }
-        .btn-back { background: #b0bec5; color: white; padding: 0.75rem 1.5rem; border-radius: 40px; text-decoration: none; display: inline-block; }
-        .btn-back:hover { transform: translateY(-2px); }
+        .btn-back { background: #7b1fa2; color: white; padding: 0.75rem 1.5rem; border-radius: 40px; text-decoration: none; display: inline-block; }
+        .btn-back:hover { transform: translateY(-2px); background: #6a1b9a; }
+        .submit-btn { background: linear-gradient(135deg, #7b1fa2, #4a148c); }
+        .submit-btn:hover { background: linear-gradient(135deg, #6a1b9a, #38006b); }
+        .form-group label { color: #4a148c; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #7b1fa2;
+            box-shadow: 0 0 0 3px rgba(123, 31, 162, 0.2);
+        }
+        .error-summary { background: #ffebee; border-left: 5px solid #f44336; }
+        header { background: linear-gradient(135deg, #7b1fa2, #4a148c); border-bottom: 5px solid #4caf50; }
+        footer { background: #7b1fa2; border-top: 1px solid #4caf50; }
+        .btn-back { background: #4caf50; }
+        .btn-back:hover { background: #388e3c; }
+        .admin-edit-container .submit-btn { background: linear-gradient(135deg, #4caf50, #2e7d32); }
+        .admin-edit-container .submit-btn:hover { background: linear-gradient(135deg, #388e3c, #1b5e20); }
+        .admin-edit-container .form-group label { color: #2e7d32; }
+        .admin-edit-container .form-group input:focus, 
+        .admin-edit-container .form-group select:focus, 
+        .admin-edit-container .form-group textarea:focus {
+            border-color: #4caf50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
     </style>
 </head>
 <body>

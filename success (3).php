@@ -25,16 +25,20 @@ foreach (['full_name', 'phone', 'email', 'birth_date', 'gender', 'languages', 'b
         }
         .success-message .id {
             font-size: 1.2rem;
-            color: #d81b60;
+            color: #4a148c;
             font-weight: bold;
         }
+        header { background: linear-gradient(135deg, #7b1fa2, #4a148c); border-bottom: 5px solid #4caf50; }
+        footer { background: #7b1fa2; border-top: 1px solid #4caf50; }
+        .action-btn { background: linear-gradient(135deg, #7b1fa2, #4a148c); }
+        .action-btn:hover { background: linear-gradient(135deg, #6a1b9a, #38006b); }
+        .action-btn.secondary { background: linear-gradient(135deg, #4caf50, #2e7d32); }
+        .action-btn.secondary:hover { background: linear-gradient(135deg, #388e3c, #1b5e20); }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-           
-           
             <h2>Задание 4. Данные успешно сохранены</h2>
         </div>
     </header>
@@ -48,7 +52,7 @@ foreach (['full_name', 'phone', 'email', 'birth_date', 'gender', 'languages', 'b
         </div>
         <div class="action-buttons">
             <a href="index.php" class="action-btn">📝 Заполнить новую анкету</a>
-            <a href="list.php" class="action-btn">📋 Посмотреть все анкеты</a>
+            <a href="list.php" class="action-btn secondary">📋 Посмотреть все анкеты</a>
         </div>
     </main>
     <footer>

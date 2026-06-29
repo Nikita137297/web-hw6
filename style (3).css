@@ -1,0 +1,259 @@
+/* style.css — Purple-Green theme */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  background-color: #f3e5f5;
+  color: #2d1b3d;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #7b1fa2, #4a148c);
+  color: #fff;
+  padding: 2rem 0;
+  text-align: center;
+  border-bottom: 5px solid #4caf50;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.student-info {
+  background-color: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  margin-top: 0.8rem;
+}
+
+/* Main */
+main {
+  padding: 2rem 0;
+}
+
+.intro {
+  background-color: #f3e5f5;
+  padding: 1.5rem;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  border-left: 8px solid #7b1fa2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Form */
+.application-form {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(123, 31, 162, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #4a148c;
+}
+
+.required {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ce93d8;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #7b1fa2;
+  box-shadow: 0 0 0 3px rgba(123, 31, 162, 0.2);
+}
+
+.form-group small {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #6a1b9a;
+}
+
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+}
+
+.radio-group label {
+  font-weight: normal;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: normal !important;
+}
+
+.checkbox-label input {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+}
+
+select[multiple] {
+  min-height: 150px;
+}
+
+select[multiple] option {
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+select[multiple] option:checked {
+  background: #7b1fa2 linear-gradient(0deg, #7b1fa2, #7b1fa2);
+  color: white;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 40px;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(46, 125, 50, 0.4);
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  background: linear-gradient(135deg, #7b1fa2, #4a148c);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.action-btn.secondary {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+}
+
+.action-btn.admin {
+  background: linear-gradient(135deg, #7b1fa2, #4a148c);
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+  background: #7b1fa2;
+  color: #fff;
+  text-align: center;
+  padding: 1.2rem 0;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #4caf50;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  header h1 {
+    font-size: 1.8rem;
+  }
+  .application-form {
+    padding: 1.5rem;
+  }
+  .radio-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Админ-панель */
+.error-summary {
+  background: #ffebee;
+  border-left: 5px solid #f44336;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+.error-summary ul {
+  margin: 0.5rem 0 0 1.5rem;
+}
+.error-summary li {
+  color: #c62828;
+}
