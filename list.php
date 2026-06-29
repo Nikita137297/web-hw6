@@ -148,4 +148,159 @@ $applications = $stmt->fetchAll();
             padding: 0 0.5rem;
         }
         
-       
+        .action-buttons {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .action-btn.secondary {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+        }
+        
+        .gender-male {
+            color: #2196f3;
+            font-weight: bold;
+        }
+        .gender-female {
+            color: #e91e63;
+            font-weight: bold;
+        }
+        
+        .email-cell {
+            word-break: break-all;
+        }
+        
+        header { background: linear-gradient(135deg, #7b1fa2, #4a148c); border-bottom: 5px solid #4caf50; }
+        footer { background: #7b1fa2; border-top: 1px solid #4caf50; }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 0 10px;
+            }
+            .applications-table th,
+            .applications-table td {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+            .badge {
+                font-size: 0.6rem;
+                padding: 0.15rem 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📡 Программно-аппаратные средства Web</h1>
+            <p class="student-info">Список всех анкет</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="stats">
+            Всего анкет в базе данных: <strong><?php echo count($applications); ?></strong>
+        </div>
+
+        <?php if (empty($applications)): ?>
+            <div class="empty-state">
+                <p>😕 Пока нет ни одной сохранённой анкеты.</p>
+                <a href="index.php" class="action-btn" style="margin-top: 1rem; display: inline-block;">📝 Заполнить первую анкету</a>
+            </div>
+        <?php else: ?>
+            <div class="table-wrapper">
+                <table class="applications-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ФИО</th>
+                            <th>Телефон</th>
+                            <th>Email</th>
+                            <th>Дата рождения</th>
+                            <th>Пол</th>
+                            <th>Любимые ЯП</th>
+                            <th>Биография</th>
+                            <th>Дата создания</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($applications as $app): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($app['id']); ?></td>
+                                <td><?php echo htmlspecialchars($app['full_name']); ?></td>
+                                <td><?php echo htmlspecialchars($app['phone']); ?></td>
+                                <td class="email-cell"><?php echo htmlspecialchars($app['email']); ?></td>
+                                <td><?php echo date('d.m.Y', strtotime($app['birth_date'])); ?></td>
+                                <td class="<?php echo $app['gender'] == 'male' ? 'gender-male' : 'gender-female'; ?>">
+                                    <?php 
+                                    $gender_text = '';
+                                    if ($app['gender'] == 'male') $gender_text = '♂ Мужской';
+                                    if ($app['gender'] == 'female') $gender_text = '♀ Женский';
+                                    echo $gender_text;
+                                    ?>
+                                </td>
+                                <td class="languages-cell">
+                                    <?php 
+                                    $languages = explode(', ', $app['languages'] ?? '');
+                                    foreach ($languages as $lang):
+                                        if (trim($lang)):
+                                    ?>
+                                        <span class="badge"><?php echo htmlspecialchars(trim($lang)); ?></span>
+                                    <?php 
+                                        endif;
+                                    endforeach; 
+                                    if (empty($app['languages'])):
+                                        echo '<em style="color: #6a1b9a;">— не выбрано —</em>';
+                                    endif;
+                                    ?>
+                                </td>
+                                <td class="biography-cell">
+                                    <?php 
+                                    $bio = htmlspecialchars($app['biography'] ?? '');
+                                    if (empty($bio)):
+                                        echo '<em style="color: #6a1b9a;">— не указано —</em>';
+                                    else:
+                                        echo strlen($bio) > 100 ? substr($bio, 0, 100) . '…' : $bio;
+                                    endif;
+                                    ?>
+                                </td>
+                                <td><?php echo date('d.m.Y H:i:s', strtotime($app['created_at'])); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php endif; ?>
+        
+        <div class="action-buttons">
+            <a href="index.php" class="action-btn">📝 Добавить новую анкету</a>
+            <a href="admin.php" class="action-btn secondary">👑 Админ-панель</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Лабораторная работа №6 — Список анкет | Май 2026</p>
+        </div>
+    </footer>
+</body>
+</html>
