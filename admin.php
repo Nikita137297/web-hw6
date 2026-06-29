@@ -203,7 +203,12 @@ $totalApplications = count($applications);
     </style>
 </head>
 <body>
-   
+    <header>
+        <div class="container">
+            <h1>📡 Программно-аппаратные средства Web</h1>
+            <p class="student-info">Панель администратора</p>
+        </div>
+    </header>
 
     <main class="admin-container">
         <!-- Информация об администраторе -->

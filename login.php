@@ -106,7 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <header>
         <div class="container">
-            <h2>Задание 5. Вход в систему</h2>
+            <h1>📡 Программно-аппаратные средства Web</h1>
+            <p class="student-info">Вход в систему</p>
         </div>
     </header>
 

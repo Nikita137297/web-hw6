@@ -39,7 +39,8 @@ foreach (['full_name', 'phone', 'email', 'birth_date', 'gender', 'languages', 'b
 <body>
     <header>
         <div class="container">
-            <h2>Задание 4. Данные успешно сохранены</h2>
+            <h1>📡 Программно-аппаратные средства Web</h1>
+            <p class="student-info">Успешное сохранение</p>
         </div>
     </header>
     <main class="container">

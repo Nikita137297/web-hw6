@@ -13,8 +13,9 @@ try {
     die("Ошибка подключения к базе данных: " . $e->getMessage());
 }
 
-// Секретный ключ для JWT (используется в login.php и edit.php)
+// Секретный ключ для JWT
 define('SECRET_KEY', 'your-secret-key-here-change-it-2026');
+
 function authenticateAdmin() {
     if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
         header('WWW-Authenticate: Basic realm="Admin Area"');
